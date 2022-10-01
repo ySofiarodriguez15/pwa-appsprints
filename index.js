@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-require("dotenv").config();
 const Port = process.env.PORT || 8080;
 const hbs = require("hbs");
-const mysql = require("mysql2");
 const path = require("path");
-
+const app = require('./server');
+const { PORT } = require('./config/mongo');
+const { getConnection } = require('./db/conexion');
 
 const homeRouter = require('./routes/homeRouter');
 const subscribeRouter = require('./routes/subscribeRouter');
@@ -49,7 +49,9 @@ hbs.registerPartials(path.join(__dirname, 'views/partials'));
     if (error) throw error;
     res.render("Contacto");
     });*/
-
+    getConnection().then((mensaje) =>{
+        console.log(mensaje);
+    }).catch(console.log); 
 
 app.listen(Port, ()=>{
 console.log(`Servidor corriendo en el Puerto ${Port}`);

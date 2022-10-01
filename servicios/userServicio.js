@@ -1,5 +1,5 @@
 
-const baseModel = require('../db/userModel');
+const userModel = require('../db/userModel');
 
 module.exports = class {
 
@@ -10,20 +10,6 @@ module.exports = class {
     async getAllUser(){
         const todos = await userModel.find();
         return todos;
-    }
-
-    async getUser(id){
-        const buscado = await userModel.findById(id)
-        return buscado;
-    }
-
-    async updateUser(id, userActualizar){
-        const actualizado = await userModel.findByIdAndUpdate(id, userActualizar);
-        return actualizado;
-    }
-
-    async deleteUser(id){
-        await userModel.findByIdAndDelete(id)
     }
 
 }

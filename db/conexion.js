@@ -3,7 +3,7 @@ const { MONGO, MONGOATLAS } = require('../config/mongo');
 
 exports.getConnection = async () => {
     try {
-        await mongoose.connect(MONGOATLAS, { 
+        await mongoose.connect(MONGO, { 
             useNewUrlParser: true, 
             useUnifiedTopology: true,
         });
