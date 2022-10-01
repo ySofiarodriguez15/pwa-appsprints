@@ -1,5 +1,5 @@
 
-const userModel = require('../db/userModel');
+const baseModel = require('../db/userModel');
 
 module.exports = class {
 
