@@ -3,7 +3,7 @@ const app = express();
 const Port = process.env.PORT || 8080;
 const hbs = require("hbs");
 const path = require("path");
-const app = require('./server');
+const appServer = require('./server');
 const { PORT } = require('./config/mongo');
 const { getConnection } = require('./db/conexion');
 
@@ -53,9 +53,9 @@ hbs.registerPartials(path.join(__dirname, 'views/partials'));
         console.log(mensaje);
     }).catch(console.log); 
 
-app.listen(Port, ()=>{
+appServer.listen(Port, ()=>{
 console.log(`Servidor corriendo en el Puerto ${Port}`);
 });
-app.on('error', (error) =>{
+appServer.on('error', (error) =>{
 console.log(`Tenemos un error ${error}`);
 });

@@ -1,29 +1,37 @@
-const knex = require('../db/conexion');
+const socioServicio = require('../servicios/userServicio');
+const socio = new socioServicio();
 
-const subscribeSocio = (req, res) => {
-    res.send(`Te envío el formulario para que seas parte`)
-}
-
-const selectSocio = (req, res) => {
-    knex.select('*')
-    .from('subscribe')
-    .then((response) => {
-        for (row of response) {
-            console.log(`${row['nombre']} - ${row['descripcion']}`);            
-        }
-        res.send(`Te muestro quienes forman parte de nuestro club`)
+const subscribeSocio = async (req, res) => {
+    await socio.createUser(req.body);
+    res.json({
+        socio: 'Creado'
     })
-    .catch((err) => {
-        console.log(`${err}`);
-    })
+    console.log(req.body);
+};
+
+
+const selectSocio = async (req, res) => {
+    const{
+        params: {	 id }
+
+    }= req;
+     const buscado = await user.getUser(id);
+     res.json(buscado)
+}   
+
+const borrarSocio = async (req, res) => {
+    const{
+        params: {id}
+    } = req;
+    await user.deleteUser(id);
+    res.json({
+        mensaje: 'socio eliminado'
+    });
 }
 
-const crearSocio = (req, res) => {
-    res.send(`Socio Confirmado`)
-}
 
 module.exports = {
     subscribeSocio,
     selectSocio,
-    crearSocio
+    borrarSocio
 }

@@ -3,20 +3,20 @@ const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 
 const userSchema = new Schema({
-    name: {
+    nombre: {
         type: 'string',
+        required: true
+    },
+    apellido: {
+        type: 'string',
+        required: true
+    },
+    fechaNacimiento: {
+        type: Date,
         required: true
     },
     email: {
         type: 'string',
-        required: true
-    },
-    direccion: {
-        type: 'string',
-        required: true
-    },
-    edad: {
-        type: Number,
         required: true
     }
 });

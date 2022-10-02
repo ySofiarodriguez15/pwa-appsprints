@@ -6,15 +6,14 @@ const router = Router();
 const { 
     subscribeSocio,
     selectSocio,
-    crearSocio
+    borrarSocio
 } = require('../controllers/subscribeController')
 
 
 
-
 router.get('/', subscribeSocio); 
-router.get('/', selectSocio);
-router.post('/', crearSocio);
+router.get('/select/:id', selectSocio);
+router.post('/borrar/:id', borrarSocio);
 
 
 

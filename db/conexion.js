@@ -5,7 +5,7 @@ exports.getConnection = async () => {
     try {
         await mongoose.connect(MONGO, { 
             useNewUrlParser: true, 
-            useUnifiedTopology: true,
+            useUnifiedTopology: false,
         });
         return 'Conexión Correcta'        
     } catch (error) {
